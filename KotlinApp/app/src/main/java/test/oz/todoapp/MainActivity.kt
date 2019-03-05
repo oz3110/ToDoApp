@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
-
+    val m_LoginController : LoginController = LoginController()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,7 +20,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
     }
 
     override fun onClick(p0: View?) {
-        val intent : Intent = Intent(this, ToDoActivity::class.java)
-        startActivity(intent)
+        var id = ""
+        var pass = ""
+        if( m_LoginController.login(id, pass)) {
+            val intent: Intent = Intent(this, ToDoActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
