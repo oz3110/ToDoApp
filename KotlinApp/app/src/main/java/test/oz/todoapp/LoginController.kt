@@ -1,9 +1,9 @@
 package test.oz.todoapp
 
-class LoginController : LoginControllerMediator(){
-    override fun login( user_id : String, user_pass : String ) : Boolean{
-        // modelにデータを送り、ＤＢと通信する
+class LoginController( loginModelObserver : LoginModelObserver ) : LoginControllerMediator(){
+    val m_LoginDB = loginModelObserver
 
-        return true
+    override fun login( user_id : String, user_pass : String ) : Boolean{
+        return m_LoginDB.observe(user_id, user_pass)
     }
 }

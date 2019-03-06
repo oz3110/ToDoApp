@@ -11,7 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
-    val m_LoginController : LoginController = LoginController()
+    val m_LoginModel : LoginModel = LoginModel()
+    val m_LoginController : LoginController = LoginController( m_LoginModel )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
