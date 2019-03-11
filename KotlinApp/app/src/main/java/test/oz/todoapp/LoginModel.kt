@@ -15,7 +15,7 @@ class LoginModel : LoginModelObserver(){
         var con : HttpURLConnection? = null
 
         try{
-            val urlStr = "http://localhost"
+            val urlStr = "http://10.0.2.2"
             val url = URL(urlStr)
             con = url.openConnection() as HttpURLConnection
             con.requestMethod = "POST"
