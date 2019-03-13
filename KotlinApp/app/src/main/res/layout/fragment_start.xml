@@ -16,16 +16,16 @@
             android:text="@string/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/login_button" android:layout_marginTop="8dp"
+            android:id="@+id/loginButton" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/textView" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/regist_button" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/registButton" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.501" app:layout_constraintVertical_bias="0.831"/>
     <Button
             android:text="@string/regist_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/regist_button" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:id="@+id/registButton" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/textView"/>

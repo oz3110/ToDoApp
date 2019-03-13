@@ -1,13 +1,13 @@
-package test.oz.todoapp
+package test.oz.todoapp.Activity
 
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import test.oz.todoapp.R
 
 class ToDoActivity : AppCompatActivity(), View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?){
