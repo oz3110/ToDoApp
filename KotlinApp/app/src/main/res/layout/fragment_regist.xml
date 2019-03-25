@@ -19,9 +19,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:ems="10"
-                android:id="@+id/registName"/>
+                android:id="@+id/registName" android:hint="@string/hint_name"/>
         <TextView
                 android:text="@string/regist_email"
                 android:layout_width="match_parent"
@@ -31,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:id="@+id/registEmail"/>
+                android:id="@+id/registEmail" android:hint="@string/hint_email"/>
         <TextView
                 android:text="@string/regist_password"
                 android:layout_width="match_parent"
@@ -41,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:ems="10"
-                android:id="@+id/registPassword"/>
+                android:id="@+id/registPassword" android:hint="@string/hint_password"/>
     </LinearLayout>
     <Button
             android:text="@string/dialog_ok"
