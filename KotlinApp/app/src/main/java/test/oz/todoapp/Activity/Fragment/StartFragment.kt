@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import test.oz.todoapp.Activity.ToDoActivity
 import test.oz.todoapp.R
 
@@ -20,10 +21,10 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getView()?.findViewById<Button>(R.id.loginButton)?.setOnClickListener({
-            val flagmentTransaction = fragmentManager?.beginTransaction()
-            flagmentTransaction?.addToBackStack(null)
-            flagmentTransaction?.replace(R.id.container, UserLoginFragment())
-            flagmentTransaction?.commit()
+            Navigation.findNavController(view).navigate(R.id.userLoginFragment)
+        })
+        getView()?.findViewById<Button>(R.id.registButton)?.setOnClickListener({
+            Navigation.findNavController(view).navigate(R.id.userRegistFragment)
         })
     }
 }

@@ -5,4 +5,10 @@
     <string name="button_name">ToDo</string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">CANCEL</string>
+    <string name="regist_name">YourName</string>
+    <string name="regist_email">Email</string>
+    <string name="regist_password">Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

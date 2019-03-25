@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import test.oz.todoapp.Activity.ToDoActivity
+import test.oz.todoapp.Data.UserModel
 import test.oz.todoapp.Presentation.LoginController
 import test.oz.todoapp.R
 
@@ -24,7 +25,9 @@ class UserLoginFragment : Fragment(){
         parentView?.findViewById<Button>(R.id.loginButton)?.setOnClickListener({
             val userId : String = parentView?.findViewById<EditText>(R.id.userID).toString()
             val userPass : String = parentView?.findViewById<EditText>(R.id.userPass).toString()
-            if( LoginController().isLogin( userId, userPass ) ){
+
+            var user : UserModel = UserModel()
+            if( LoginController(user).isLogin( userId, userPass ) ){
 
             }
         })

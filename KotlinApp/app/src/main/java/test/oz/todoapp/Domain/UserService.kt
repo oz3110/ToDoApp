@@ -1,15 +1,23 @@
 package test.oz.todoapp.Domain
 
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 import test.oz.todoapp.Data.UserModel
 
 interface UserService {
 
-    @GET("users/{id}")
+    @GET( "/users/email/{email}/password/{password}" )
     fun getUserId(
-        @Path("id") userId : Int
+        @Query( "email" )email : String,
+        @Query( "password" )password : String
     ) : Call<UserModel>
+
+    @POST( "/users/email/{email}/name/{name}/password/{password}")
+    fun registUserId(
+        @Field( "email")email : String,
+        @Field( "name")name : String,
+        @Field( "password")password :String
+    ): Call<UserModel>
+
+
 }
