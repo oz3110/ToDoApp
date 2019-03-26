@@ -12,11 +12,11 @@ interface UserService {
         @Query( "password" )password : String
     ) : Call<UserModel>
 
-    @POST( "/users/email/{email}/name/{name}/password/{password}")
+    @POST( "/users")
     fun registUserId(
-        @Field( "email")email : String,
-        @Field( "name")name : String,
-        @Field( "password")password :String
+        @Field( "email" ) email : String,
+        @Field( "name" ) name : String,
+        @Field( "password" ) password : String
     ): Call<UserModel>
 
 
