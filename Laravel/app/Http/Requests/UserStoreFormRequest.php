@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserStoreFormRequest.php extends FormRequest
+class UserStoreFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class UserStoreFormRequest.php extends FormRequest
     {
         return [
             'name' => 'required|string|max:16',
-            'password' => 'required|string|max:255',
+            'password' => 'required|string|max:16',
         ];
     }
 }

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserStoreFormRequest;
 use App\Http\Requests\UserUpdateFormRequest;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 class UserController extends Controller
 {
     /**
@@ -38,17 +41,9 @@ class UserController extends Controller
     {
         $user = new User();
         $user->name = $request->input('name');
-        $user->password = $request->input('password');
-        $user->save();
-        return response($user, 201);
-    }
-    
-    public function store(UserStoreFormRequest $request)
-    {
-        $user = new User();
-        $user->email = $email;
-        $user->name = $name;
-        $user->password = $password;
+        $user->email = $request->input('email');
+        $user->password = encrypt($request->input('password'));
+        $user->remember_token = str_random(10);
         $user->save();
         return response($user, 201);
     }
@@ -66,8 +61,10 @@ class UserController extends Controller
     
     public function showLogin($email, $password)
     {
-    	$id = User::Where($email,$password)->value( 'id' );
-        return response($id);
+    	$user = DB::table('users')->where('email', $email)->first();
+    	if( strcmp(decrypt($user->password), $password) )$responsecode = 200;
+    	else $responsecode = 404;
+        return response($user->id, $responsecode);
     }
 
     /**
@@ -88,7 +85,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateFormRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
         if($request->input('password')){
             $user->content = $request->input('password');
