@@ -15,21 +15,17 @@ import test.oz.todoapp.R
 
 class UserLoginFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_login, container,false)
-    }
+        val parent : View = inflater.inflate(R.layout.fragment_login, container,false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val parentView : View? = getView()
-
-        parentView?.findViewById<Button>(R.id.loginButton)?.setOnClickListener({
-            val userId : String = parentView?.findViewById<EditText>(R.id.userID).toString()
-            val userPass : String = parentView?.findViewById<EditText>(R.id.userPass).toString()
+        parent.findViewById<Button>(R.id.loginButton)?.setOnClickListener({
+            val userId : String = parent.findViewById<EditText>(R.id.userID).text.toString()
+            val userPass : String = parent.findViewById<EditText>(R.id.userPass).text.toString()
 
             var user : UserModel = UserModel()
             if( LoginController(user).isLogin( userId, userPass ) ){
 
             }
         })
+        return parent
     }
 }

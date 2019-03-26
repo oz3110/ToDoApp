@@ -8,6 +8,9 @@
     <string name="regist_name">YourName</string>
     <string name="regist_email">Email</string>
     <string name="regist_password">Password</string>
+    <string name="hint_name">input your name</string>
+    <string name="hint_email">input your email</string>
+    <string name="hint_password">input your password</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
