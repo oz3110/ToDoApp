@@ -61,10 +61,10 @@ class UserController extends Controller
     
     public function showLogin($email, $password)
     {
-    	$user = DB::table('users')->where('email', $email)->first();
-    	if( strcmp(decrypt($user->password), $password) )$responsecode = 200;
+    	$user = User::where('email', $email)->first();
+    	if( strcmp(decrypt($user->password), $password) == 0 )$responsecode = 200;
     	else $responsecode = 404;
-        return response($user->id, $responsecode);
+        return response($user, $responsecode);
     }
 
     /**
