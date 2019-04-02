@@ -6,13 +6,14 @@ import test.oz.todoapp.Data.UserModel
 
 interface UserService {
 
-    @GET( "/users/email/{email}/password/{password}" )
+    @GET( "/api/users/email/{email}/password/{password}" )
     fun getUserId(
-        @Query( "email" )email : String,
-        @Query( "password" )password : String
+        @Path( "email" )email : String,
+        @Path( "password" )password : String
     ) : Call<UserModel>
 
-    @POST( "/users")
+    @FormUrlEncoded
+    @POST( "/api/users")
     fun registUserId(
         @Field( "email" ) email : String,
         @Field( "name" ) name : String,
