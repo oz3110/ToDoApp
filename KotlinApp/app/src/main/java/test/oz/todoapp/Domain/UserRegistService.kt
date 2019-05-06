@@ -1,5 +1,6 @@
 package test.oz.todoapp.Domain
 
+import com.google.gson.GsonBuilder
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,7 +18,7 @@ class UserRegistService {
         val retrofit = Retrofit.Builder()
             .baseUrl( "http://10.0.2.2/")
             .client(OkHttpClient())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().serializeNulls().create()))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
         val service = retrofit.create(IUserRegistRequest::class.java)

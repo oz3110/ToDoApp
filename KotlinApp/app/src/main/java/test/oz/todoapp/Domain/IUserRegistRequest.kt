@@ -7,7 +7,7 @@ import retrofit2.http.*
 import test.oz.todoapp.Data.UserModel
 
 interface IUserRegistRequest {
-    @POST( "api/users/")
+    @POST( "api/registUsers/")
     fun registUser(
           @Body body: HashMap<String, String>
 //        @Query( "email" ) email : String,

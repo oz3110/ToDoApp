@@ -24,8 +24,8 @@ class UserRegistFragment : Fragment(){
             val userName : String = parent.findViewById<EditText>(R.id.registName).text.toString()
             val userPass : String = parent.findViewById<EditText>(R.id.registPassword).text.toString()
             val userEmail : String = parent.findViewById<EditText>(R.id.registEmail).text.toString()
-            UserRegistService().regist( userEmail, userName, userPass ).subscribe({
-                if( it.isSuccessful ){
+            UserRegistService().regist( userEmail, userName, userPass ).subscribe({ response ->
+                if( response.code() == 201 ){
                     AlertDialog.Builder(view?.context)
                         .setTitle("登録されました")
                         .setPositiveButton("ok", null)
@@ -38,6 +38,8 @@ class UserRegistFragment : Fragment(){
                         .setPositiveButton("ok", null)
                         .show()
                 }
+            },{ response ->
+                print(response.message)
             })
 
         })
