@@ -40,11 +40,8 @@ class UserController extends Controller
     public function store(UserStoreFormRequest $request)
     {
         $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = encrypt($request->input('password'));
         $user->remember_token = str_random(10);
-        $user->save();
+        $user->fill($request->all())->save();
         return response($user, 201);
     }
 

@@ -17,7 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });*/
 
-Route::get( '/users/id/{id}', 'UserController@show');
-Route::get( '/users/email/{email}/password/{password}', 'UserController@showLogin');
+Route::get( '/users/{id}', 'UserController@show');
+Route::post( '/registUsers/', 'UserController@store' );
+Route::post( '/sessions/', 'UserController@showLogin');
 Route::resource( '/users', 'UserController', ['except' => ['create', 'edit']]);
+// Users/{id}/itemsでshowする
 Route::resource( '/items', 'ItemController', ['except' => ['create', 'edit']]);
