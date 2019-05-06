@@ -12,6 +12,7 @@
     <string name="hint_email">input your email</string>
     <string name="hint_password">input your password</string>
 
+    <string name="api_url">http://localhost/</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -12,46 +12,35 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import test.oz.todoapp.Activity.ToDoActivity
 import test.oz.todoapp.Data.UserModel
+import test.oz.todoapp.Domain.UserRegistService
 import test.oz.todoapp.Presentation.LoginController
 import test.oz.todoapp.R
 import test.oz.todoapp.Utility.ResponseMediator
 
-class UserRegistFragment : Fragment(), ResponseMediator{
+class UserRegistFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val parent : View = inflater.inflate(R.layout.fragment_regist, container,false)
         parent.findViewById<Button>(R.id.registOK)?.setOnClickListener({
             val userName : String = parent.findViewById<EditText>(R.id.registName).text.toString()
             val userPass : String = parent.findViewById<EditText>(R.id.registPassword).text.toString()
             val userEmail : String = parent.findViewById<EditText>(R.id.registEmail).text.toString()
-            var user : UserModel = UserModel()
-            // Dialogでもだす？
-            LoginController(user,this).regist( userEmail, userName, userPass )
+            UserRegistService().regist( userEmail, userName, userPass ).subscribe({
+                if( it.isSuccessful ){
+                    AlertDialog.Builder(view?.context)
+                        .setTitle("登録されました")
+                        .setPositiveButton("ok", null)
+                        .show()
 
-/*
-                AlertDialog.Builder(parent.context)
-                    .setTitle("登録に失敗しました")
-                    .setPositiveButton("ok"){
-                            dialog,witch->
-                    }.show()*/
+                    Navigation.findNavController(view!!).navigate(R.id.startFragment)
+                }else{
+                    AlertDialog.Builder(view?.context)
+                        .setTitle("登録に失敗しました")
+                        .setPositiveButton("ok", null)
+                        .show()
+                }
+            })
 
         })
         return parent
-    }
-
-    override fun onResponse(message: String, code: Int) {
-        if( code == 201 ) {
-            AlertDialog.Builder(view?.context)
-                .setTitle("登録されました")
-                .setPositiveButton("ok") { dialog, witch ->
-                }.show()
-        }
-        else{
-            AlertDialog.Builder(view?.context)
-                .setTitle("登録に失敗しました")
-                .setPositiveButton("ok"){
-                        dialog,witch->
-                }.show()
-        }
-//        Navigation.findNavController(view!!).navigate(R.id.startFragment)
     }
 }

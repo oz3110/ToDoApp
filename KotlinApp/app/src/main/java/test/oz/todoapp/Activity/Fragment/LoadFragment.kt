@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import io.realm.Realm
 import test.oz.todoapp.Activity.ToDoActivity
 import test.oz.todoapp.R
+import test.oz.todoapp.Realm.UserRealm
 
 class LoadFragment : Fragment() {
     override fun onCreateView(
@@ -29,7 +31,15 @@ class LoadFragment : Fragment() {
         Navigation.findNavController(view).navigate(R.id.startFragment)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     fun cacheLogin() : Boolean{
+        val result = Realm.getDefaultInstance().where(UserRealm::class.java).findAll()
+        // resultからパラメータ取得してログインする
+        // 結果をリターンに入れて終了
+        // ロード演出に関しては？
         return false
     }
 }

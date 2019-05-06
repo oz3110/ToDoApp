@@ -8,29 +8,23 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import test.oz.todoapp.Data.UserModel
+import test.oz.todoapp.Domain.UserLoginService
+import test.oz.todoapp.Domain.UserRegistService
 import test.oz.todoapp.Domain.UserService
 import test.oz.todoapp.Utility.ResponseMediator
 
 class LoginController( var user : UserModel, var fragment : ResponseMediator){
     var errorString : String = ""
     fun login( userEmail : String, userPass : String ) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000/")
-            .client(OkHttpClient())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        var service = retrofit.create(UserService::class.java)
-        service.getUserId( userEmail, userPass ).enqueue(UserModelCallback())
+        UserLoginService().login(userEmail,userPass).subscribe({
+          // Todo:処理を書く
+        })
     }
 
     fun regist( userEmail : String, userName : String, userPass : String ) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000/")
-            .client(OkHttpClient())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        var service = retrofit.create(UserService::class.java)
-        service.registUserId( userEmail, userName, userPass ).enqueue(UserModelCallback())
+        UserRegistService().regist(userEmail,userName,userPass).subscribe({
+
+        })
     }
 
     fun getMessage() : String {
